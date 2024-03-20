@@ -8,6 +8,14 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Variable */
+
+:root {
+  --BGCOLOR: #7fffd4;
+  --ALT-BGCOLOR: #7fffd7;
 }
 
 app-home {
@@ -18,20 +26,10 @@ app-home {
 body {
   font: 1.5rem "Nunito", san-serif;
   min-height: 100vh;
-  background-color: #7fffd4;
-  background-image: radial-gradient(whitesmoke, aquamarine);
+  background-color: var(--BGCOLOR);
+  background-image: radial-gradient(whitesmoke, var(--BGCOLOR));
   display: flex;
   flex-direction: column;
-}
-
-header,
-nav,
-main,
-footer {
-  display: grid;
-  place-content: center;
-  grid-template-columns: 100%;
-  text-align: center;
 }
 
 ul {
@@ -47,8 +45,9 @@ li {
 header,
 footer {
   position: sticky;
-  background-color: #7fffd7;
+  background-color: var(--ALT-BGCOLOR);
   color: white;
+  text-align: center;
 }
 header {
   top: 0;
@@ -56,6 +55,11 @@ header {
 
 main {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
 footer {
@@ -68,62 +72,198 @@ nav {
   padding: 0.5 rem;
   border-bottom: 2px solid;
 }
-a {
+
+.nav {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-evenly;
+}
+nav a {
   color: black;
   text-decoration: none;
+}
+
+.nav a,
+.nav a:any-link {
+  color: black;
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: black;
+  text-decoration: none;
+}
+.nav :is(a:hover, a:focus),
+nav a:hover,
+nav a:focus {
+  color: hsla(0, 0%, 20%, 0.6);
+}
+
+nav a:active {
+  color: hsla(0, 54%, 24%, 0.6);
+}
+
+app-home article.card:target {
+  border: 5px solid purple;
+}
+
+.card img[alt] {
+  border: 1px solid rgb(6, 3, 3);
+  border-radius: 40px;
+}
+
+.card:nth-child(1) {
+  background-color: gainsboro;
+}
+
+.card figcaption::after {
+  content: "Hard";
+  display: block;
+}
+
+.card p {
+  position: relative;
+}
+
+/* .card p::before {
+  content: open-quote;
+  font-size: 3em;
+  position: absolute;
+  top: -0.25 em;
+  left: -0.5 em;
+}
+.card p::after {
+  content: close-quote;
+} */
+
+.card figcaption::first-letter {
+  font-size: 3rem;
 }
 
 /* Small */
 
 @media screen and (min-width: 576px) {
-  body,
-  .body {
-    background-color: green;
-    background-image: radial-gradient(whitesmoke, green);
+  main {
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
   }
-  nav {
-    display: none;
+  app-home article.card {
+    width: min(100%, 400px);
+  }
+
+  app-home article.card:last-child {
+    order: -1;
   }
 }
 /* Medium */
 
 @media screen and (min-width: 768px) {
-  body,
-  .body {
-    background-color: goldenrod;
-    background-image: radial-gradient(whitesmoke, goldenrod);
+  .nav {
+    display: none;
+  }
+  app-home article.card {
+    width: min(100%, 325px);
+  }
+  app-home article.card figure {
+    flex-flow: column-reverse;
+  }
+  app-home article.card p {
+    margin-top: 1rem;
   }
 }
 /* Large */
 
 @media screen and (min-width: 992px) {
-  body,
-  .body {
-    background-color: firebrick;
-    background-image: radial-gradient(whitesmoke, firebrick);
+  app-home article.card {
+    width: min(100%, 400px);
+  }
+
+  app-home article.card:nth-child(2) {
+    order: -1;
   }
 }
 /* XLarge */
 
 @media screen and (min-width: 1200px) {
-  body,
-  .body {
-    background-color: rebeccapurple;
-    background-image: radial-gradient(whitesmoke, rebeccapurple);
+  app-home article.card {
+    width: min(calc(33% - 1rem), 500px);
+  }
+  .nav {
+    display: flex;
   }
 }
 /* Mobile Landscape */
 
 @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-  body,
-  .body {
-    background-color: dodgerblue;
-    background-image: radial-gradient(whitesmoke, dodgerblue);
+  h1 {
+    font-size: 1.5 rem;
   }
-  h1.h2 {
-    font-size: 1rem;
+
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+
+  app-home article.card {
+    width: min(calc(33%- 0.25rem), 200px);
+  }
+
+  app-home article.card figcaption,
+  app-home article.card p {
+    font-size: 1.25 rem;
   }
   nav {
     display: none;
   }
+}
+
+img {
+  display: block;
+  max-width: 90%;
+  max-height: 200px;
+  height: auto;
+  margin: auto;
+}
+
+/* Utility Classes */
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Profile Card */
+article {
+  padding: 5px;
+}
+.card {
+  scroll-margin-top: 8rem;
+  width: min(100%, 250px);
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card figure {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card img {
+  border: 5px double #333;
+  /* border-radius: 50%; */
+}
+
+.card figcaption {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
 }
