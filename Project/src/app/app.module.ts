@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
-import { ProfileComponent } from './user/profile/profile.component';
 import { CatalogComponent } from './programs/catalog/catalog.component';
 import { CreateComponent } from './programs/create/create.component';
 import { EditComponent } from './programs/edit/edit.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,18 +17,12 @@ import { EditComponent } from './programs/edit/edit.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
     CatalogComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, UserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
