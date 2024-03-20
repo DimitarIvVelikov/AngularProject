@@ -106,27 +106,27 @@ nav a:active {
   color: hsla(0, 54%, 24%, 0.6);
 }
 
-app-home article.card:target {
+/* app-home article.card:target {
   border: 5px solid purple;
-}
+} */
 
 .card img[alt] {
   border: 1px solid rgb(6, 3, 3);
   border-radius: 40px;
 }
 
-.card:nth-child(1) {
+/* .card:nth-child(1) {
   background-color: gainsboro;
-}
+} */
 
-.card figcaption::after {
+/* .card figcaption::after {
   content: "Hard";
   display: block;
 }
 
 .card p {
   position: relative;
-}
+} */
 
 /* .card p::before {
   content: open-quote;
@@ -139,88 +139,11 @@ app-home article.card:target {
   content: close-quote;
 } */
 
-.card figcaption::first-letter {
+/* .card figcaption::first-letter {
   font-size: 3rem;
-}
+} */
 
 /* Small */
-
-@media screen and (min-width: 576px) {
-  main {
-    justify-content: center;
-    flex-flow: row wrap;
-    padding: 1rem;
-  }
-  app-home article.card {
-    width: min(100%, 400px);
-  }
-
-  app-home article.card:last-child {
-    order: -1;
-  }
-}
-/* Medium */
-
-@media screen and (min-width: 768px) {
-  .nav {
-    display: none;
-  }
-  app-home article.card {
-    width: min(100%, 325px);
-  }
-  app-home article.card figure {
-    flex-flow: column-reverse;
-  }
-  app-home article.card p {
-    margin-top: 1rem;
-  }
-}
-/* Large */
-
-@media screen and (min-width: 992px) {
-  app-home article.card {
-    width: min(100%, 400px);
-  }
-
-  app-home article.card:nth-child(2) {
-    order: -1;
-  }
-}
-/* XLarge */
-
-@media screen and (min-width: 1200px) {
-  app-home article.card {
-    width: min(calc(33% - 1rem), 500px);
-  }
-  .nav {
-    display: flex;
-  }
-}
-/* Mobile Landscape */
-
-@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
-  h1 {
-    font-size: 1.5 rem;
-  }
-
-  main {
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: stretch;
-  }
-
-  app-home article.card {
-    width: min(calc(33%- 0.25rem), 200px);
-  }
-
-  app-home article.card figcaption,
-  app-home article.card p {
-    font-size: 1.25 rem;
-  }
-  nav {
-    display: none;
-  }
-}
 
 img {
   display: block;
@@ -266,4 +189,80 @@ article {
   font-size: 2rem;
   margin: 1rem;
   text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --BGCOLOR: #000;
+    --ALT-BGCOLOR: #333;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  main {
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
+  }
+  app-home article.card {
+    width: min(100%, 400px);
+  }
+}
+/* Medium */
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: none;
+  }
+  app-home article.card {
+    width: min(100%, 325px);
+  }
+  app-home article.card figure {
+    flex-flow: column-reverse;
+  }
+  app-home article.card p {
+    margin-top: 1rem;
+  }
+}
+/* Large */
+
+@media screen and (min-width: 992px) {
+  app-home article.card {
+    width: min(100%, 400px);
+  }
+}
+/* XLarge */
+
+@media screen and (min-width: 1200px) {
+  app-home article.card {
+    width: min(calc(33% - 1rem), 500px);
+  }
+  .nav {
+    display: flex;
+  }
+}
+/* Mobile Landscape */
+
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  h1 {
+    font-size: 1.5 rem;
+  }
+
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+
+  app-home article.card {
+    width: min(calc(33%- 0.25rem), 200px);
+  }
+
+  app-home article.card figcaption,
+  app-home article.card p {
+    font-size: 1.25 rem;
+  }
+  nav {
+    display: none;
+  }
 }
