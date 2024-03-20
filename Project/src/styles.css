@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+app-home {
+  display: contents;
+}
+
+.body,
+body {
+  font: 1.5rem "Nunito", san-serif;
+  min-height: 100vh;
+  background-color: #7fffd4;
+  background-image: radial-gradient(whitesmoke, aquamarine);
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+nav,
+main,
+footer {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100%;
+  text-align: center;
+}
+
+ul {
+  /* display: flex; */
+  margin: 10px 10px;
+  list-style: none;
+}
+
+li {
+  margin: 0px 10px;
+}
+
+header,
+footer {
+  position: sticky;
+  background-color: #7fffd7;
+  color: white;
+}
+header {
+  top: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  bottom: 0;
+}
+
+nav {
+  background-color: #fff;
+  color: black;
+  padding: 0.5 rem;
+  border-bottom: 2px solid;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Small */
+
+@media screen and (min-width: 576px) {
+  body,
+  .body {
+    background-color: green;
+    background-image: radial-gradient(whitesmoke, green);
+  }
+  nav {
+    display: none;
+  }
+}
+/* Medium */
+
+@media screen and (min-width: 768px) {
+  body,
+  .body {
+    background-color: goldenrod;
+    background-image: radial-gradient(whitesmoke, goldenrod);
+  }
+}
+/* Large */
+
+@media screen and (min-width: 992px) {
+  body,
+  .body {
+    background-color: firebrick;
+    background-image: radial-gradient(whitesmoke, firebrick);
+  }
+}
+/* XLarge */
+
+@media screen and (min-width: 1200px) {
+  body,
+  .body {
+    background-color: rebeccapurple;
+    background-image: radial-gradient(whitesmoke, rebeccapurple);
+  }
+}
+/* Mobile Landscape */
+
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  body,
+  .body {
+    background-color: dodgerblue;
+    background-image: radial-gradient(whitesmoke, dodgerblue);
+  }
+  h1.h2 {
+    font-size: 1rem;
+  }
+  nav {
+    display: none;
+  }
+}
