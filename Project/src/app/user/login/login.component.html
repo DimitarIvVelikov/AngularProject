@@ -1,1 +1,43 @@
-<p>login works!</p>
+<main class="container">
+  <form class="login" #form="ngForm" (ngSubmit)="login(form)">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="example@example.com"
+      ngModel
+      #inputEmail="ngModel"
+      required
+      [appEmail]="domains"
+    />
+    <ng-container *ngIf="inputEmail.touched">
+      <p class="error" *ngIf="inputEmail.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+        Email is invalid! Please use emails with domain gmail,abv or yahoo.
+      </p>
+    </ng-container>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="****"
+      ngModel
+      #inputPassword="ngModel"
+      required
+    />
+    <ng-container *ngIf="inputPassword.touched">
+      <p class="error" *ngIf="inputPassword.errors?.['required']">
+        Password is required!
+      </p>
+    </ng-container>
+    <button>Login</button>
+  </form>
+
+  <p>
+    If you do not have an account you can <a routerLink="/register">Register</a>
+  </p>
+</main>

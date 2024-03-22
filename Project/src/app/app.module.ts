@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { TrainingProgramsModule } from './training-programs/training-programs.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     TrainingProgramsModule,
     CoreModule,
     RouterModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
