@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
-import { ProgramsModule } from './programs/programs.module';
+import { TrainingProgramsModule } from './training-programs/training-programs.module';
 import { CoreModule } from './core/core.module';
 import { RouterModule } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    ProgramsModule,
+    TrainingProgramsModule,
     CoreModule,
     RouterModule,
   ],
