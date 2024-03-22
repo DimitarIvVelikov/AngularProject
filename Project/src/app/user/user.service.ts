@@ -26,20 +26,20 @@ export class UserService {
   }
 
   login(email: string, password: string): void {
-    localStorage.setItem(
+    return localStorage.setItem(
       'auth',
       JSON.stringify({ email, password, username: 'Peter' })
     );
   }
 
   register(email: string, password: string): void {
-    localStorage.setItem(
+    return localStorage.setItem(
       'auth',
       JSON.stringify({ email, password, username: 'Peter' })
     );
   }
 
   logout(): void {
-    localStorage.removeItem('auth');
+    return localStorage.removeItem('auth');
   }
 }

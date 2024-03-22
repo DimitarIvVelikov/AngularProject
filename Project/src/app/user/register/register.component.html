@@ -54,10 +54,21 @@
         Password is required!
       </p>
     </ng-container>
-    <button>Login</button>
-  </form>
 
-  <p>
-    If you do not have an account you can <a routerLink="/register">Register</a>
-  </p>
+    <label for="rePassword">Repeat Password</label>
+    <input
+      type="rePassword"
+      name="rePassword"
+      id="rePassword"
+      placeholder="****"
+      ngModel
+      #inputRePassword="ngModel"
+      required
+    />
+    <button>Login</button>
+    <p>
+      If you do not have an account you can
+      <a routerLink="/register">Register</a>
+    </p>
+  </form>
 </main>
