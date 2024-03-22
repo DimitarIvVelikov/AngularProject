@@ -4,10 +4,10 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-  box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
@@ -191,7 +191,22 @@ article {
   text-align: center;
 }
 
-@media (prefers-color-scheme: dark) {
+article:first-child {
+  background-color: dodgerblue;
+  transform: translateX(150%);
+}
+
+article:nth-child(2) {
+  background-color: yellowgreen;
+  transform: translateY(-2rem);
+}
+
+article:nth-child(3) {
+  background-color: limegreen;
+  transform: translate(100%, -4rem);
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --BGCOLOR: #000;
     --ALT-BGCOLOR: #333;
@@ -205,10 +220,10 @@ article {
     padding: 1rem;
   }
   app-home article.card {
-    width: min(100%, 400px);
+    width: min(100%, 250px);
   }
 }
-/* Medium */
+ Medium 
 
 @media screen and (min-width: 768px) {
   .nav {
@@ -224,14 +239,14 @@ article {
     margin-top: 1rem;
   }
 }
-/* Large */
+ Large 
 
 @media screen and (min-width: 992px) {
   app-home article.card {
     width: min(100%, 400px);
   }
 }
-/* XLarge */
+ XLarge 
 
 @media screen and (min-width: 1200px) {
   app-home article.card {
@@ -241,7 +256,7 @@ article {
     display: flex;
   }
 }
-/* Mobile Landscape */
+ Mobile Landscape 
 
 @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
   h1 {
@@ -265,4 +280,4 @@ article {
   nav {
     display: none;
   }
-}
+} */
