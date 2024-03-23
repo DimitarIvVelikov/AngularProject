@@ -8,8 +8,6 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private userService: UserService, private router: Router) {}
-
   get isLogged(): boolean {
     return this.userService.isLoggedIn;
   }
@@ -17,6 +15,7 @@ export class HeaderComponent implements OnInit {
   get username(): string {
     return this.userService?.user?.username || '';
   }
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     console.log('Mount');
