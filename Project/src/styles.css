@@ -52,6 +52,9 @@ footer {
 header {
   top: 0;
 }
+footer {
+  bottom: 0;
+}
 
 main {
   flex-grow: 1;
@@ -59,12 +62,9 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
   /* padding: 1rem; */
-}
-
-footer {
-  bottom: 0;
 }
 
 nav {
@@ -160,9 +160,9 @@ img {
 }
 
 /* Profile Card */
-article {
+/* article {
   padding: 5px;
-}
+} */
 .card {
   scroll-margin-top: 8rem;
   width: min(100%, 250px);

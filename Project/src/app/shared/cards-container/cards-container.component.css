@@ -1,0 +1,22 @@
+article {
+  margin: 5px;
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  text-align: center;
+}
+p::first-letter {
+  text-transform: uppercase;
+}
+
+a.more-info {
+  text-align: center;
+  text-decoration: none;
+}
+
+figure :is(a:hover, a:focus) {
+  color: crimson;
+}

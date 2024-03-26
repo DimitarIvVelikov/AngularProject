@@ -1,0 +1,18 @@
+<article *ngFor="let training of trainingPrograms">
+  <div class="card">
+    <figure>
+      <img
+        src="../../assets/chest.jpg"
+        alt="Chest Workout"
+        width="500"
+        height="500"
+      />
+      <figcaption>
+        <span class="nowrap" [id]="training.name">{{ training.name }}</span>
+      </figcaption>
+      <a [routerLink]="['/catalog', training._id]" class="more-info"
+        >More Info</a
+      >
+    </figure>
+  </div>
+</article>
