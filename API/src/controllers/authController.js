@@ -64,10 +64,12 @@ router.post("/logout", isAuth, async (req, res) => {
   }
 });
 
-router.post("/profile", isAuth, async (req, res) => {
+router.get("/profile", isAuth, async (req, res) => {
   const { _id: userId } = req.user;
   try {
-    const user = await authService.getProfile(userId);
+    let user = await authService.getProfile(userId);
+    user = bsonToJson(user);
+    user = removePassword(user);
     res.status(200).send(user);
   } catch (error) {
     res.status(400).send({ message: error.message });
