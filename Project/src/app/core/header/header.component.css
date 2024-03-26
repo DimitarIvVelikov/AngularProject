@@ -7,4 +7,22 @@
 .user-nav {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 15vw;
+  margin: 5px;
+}
+
+.user-nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-nav ul {
+  display: flex;
+}
+
+.logo-wrap {
+  width: 15vw;
+  margin: 5px;
 }
