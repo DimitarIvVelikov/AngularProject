@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("./User");
 
 const trainingProgramSchema = new mongoose.Schema(
   {
@@ -17,6 +18,14 @@ const trainingProgramSchema = new mongoose.Schema(
     difficulty: {
       type: String,
       required: [true, "Difficulty is required"],
+    },
+    imageUrl: {
+      type: String,
+      required: [true, "Image Url is required"],
+      match: [
+        /^https?:\/\//,
+        "Image Url should start with Http:// or Https://",
+      ],
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
