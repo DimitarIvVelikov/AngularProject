@@ -8,4 +8,5 @@ export interface TrainingPrograms {
   updatedAt: string;
   owner: string;
   signUpList: string[];
+  imageUrl: string;
 }
