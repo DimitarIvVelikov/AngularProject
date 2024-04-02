@@ -1,7 +1,15 @@
 const TrainingProgram = require("../model/TrainingProgram");
+const User = require("../model/User");
 
 const createTrainingProgram = async (trainingProgram) => {
   const createdProgram = await TrainingProgram.create({ ...trainingProgram });
+  await User.findByIdAndUpdate(
+    createdProgram.owner,
+    {
+      $push: { createdList: createdProgram._id },
+    },
+    { runValidators: true }
+  );
   return createdProgram;
 };
 
@@ -24,16 +32,53 @@ const updateTrainingProgram = async (id, trainingProgram) => {
   return updatedTrainingProgram;
 };
 
-const deleteTrainingProgram = async (id) => {
+const deleteTrainingProgram = async (id, userId) => {
   const deletedTrainingProgram = await TrainingProgram.findByIdAndDelete(id);
+  const users = await User.find({ signUpList: id });
+  await User.findByIdAndUpdate(
+    userId,
+    { $pull: { createdList: id } },
+    { runValidators: true }
+  );
+
+  await Promise.all(
+    users.map((user) => {
+      user.signUpList.pull(id);
+      return user.save();
+    })
+  );
+
   return deletedTrainingProgram;
 };
+
+const signUp = async (userId, id) => {
+  await User.findByIdAndUpdate(
+    userId,
+    { $push: { signUpList: id } },
+    { runValidators: true }
+  );
+
+  return await TrainingProgram.findByIdAndUpdate(id, {
+    $push: { signUpList: userId },
+  });
+};
+
+const getSignedUpAndCreatedPrograms = async (userId) => {
+  const signUpPrograms = await TrainingProgram.find({ signUpList: userId });
+
+  const createdPrograms = await TrainingProgram.find({
+    owner: userId,
+  });
+};
+
 const trainingProgramService = {
   createTrainingProgram,
   getTrainingPrograms,
   getTrainingProgram,
   updateTrainingProgram,
   deleteTrainingProgram,
+  signUp,
+  getSignedUpAndCreatedPrograms,
 };
 
 module.exports = trainingProgramService;
