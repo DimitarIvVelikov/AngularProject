@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TrainingProgramsService } from '../training-programs.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrainingPrograms } from 'src/app/types/trainingPrograms';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-current-training-program',
@@ -19,11 +20,14 @@ export class CurrentTrainingProgramComponent implements OnInit {
     updatedAt: '',
     owner: '',
     signUpList: [],
+    imageUrl: '',
   };
 
   constructor(
     private trainingProgramService: TrainingProgramsService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private router: Router,
+    public userService: UserService
   ) {}
   ngOnInit(): void {
     this.activeRoute.params.subscribe((params) => {
@@ -31,8 +35,22 @@ export class CurrentTrainingProgramComponent implements OnInit {
         .getTrainingProgram(params['trainingId'])
         .subscribe((trainingProgram) => {
           this.trainingProgram = trainingProgram;
-          console.log(this.trainingProgram);
         });
+    });
+  }
+
+  deleteTrainingProgram(): void {
+    this.trainingProgramService
+      .deleteTrainingProgram(this.trainingProgram._id)
+      .subscribe(() => {
+        this.router.navigate(['/catalog']);
+      });
+  }
+
+  signUp(): void {
+    const programId = this.trainingProgram._id as string;
+    this.trainingProgramService.signUp(programId).subscribe(() => {
+      location.reload();
     });
   }
 }

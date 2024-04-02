@@ -1,1 +1,52 @@
-<p>current-training-program works!</p>
+<div class="wrapper">
+  <div class="info">
+    <div class="image"><img [src]="trainingProgram.imageUrl" /></div>
+    <div class="program-info">
+      <div class="program-name">
+        <h3>{{ trainingProgram.name }}</h3>
+      </div>
+      <div class="difficulty-duration">
+        <div class="difficulty">
+          Difficulty: {{ trainingProgram.difficulty | titlecase }}
+        </div>
+        <div class="duration">Duration: {{ trainingProgram.duration }} min</div>
+      </div>
+      <div class="program-description">
+        Description: {{ trainingProgram.description }}
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button
+      [routerLink]="'/catalog/' + trainingProgram._id + '/edit'"
+      *ngIf="userService.user?._id == trainingProgram.owner"
+    >
+      Edit
+    </button>
+    <button
+      (click)="deleteTrainingProgram()"
+      *ngIf="userService.user?._id == trainingProgram.owner"
+    >
+      Delete
+    </button>
+    <button
+      (click)="signUp()"
+      *ngIf="
+        userService.user?._id != trainingProgram.owner &&
+        userService.user &&
+        !trainingProgram.signUpList.includes(userService.user._id)
+      "
+    >
+      Sign Up
+    </button>
+
+    <p
+      *ngIf="
+        userService.user &&
+        trainingProgram.signUpList.includes(userService.user._id)
+      "
+    >
+      You are already Signed Up!
+    </p>
+  </div>
+</div>
