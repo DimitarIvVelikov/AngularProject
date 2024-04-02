@@ -69,6 +69,14 @@ export class UserService {
     );
   }
 
+  getProfilePopulated() {
+    return this.http.get<UserForAuth>('/api/auth/profile-populated').pipe(
+      tap((user) => {
+        this.user$$.next(user);
+      })
+    );
+  }
+
   updateProfile(profile: UserForAuth) {
     return this.http.put<UserForAuth>('/api/auth/profile', profile).pipe(
       tap((user) => {
