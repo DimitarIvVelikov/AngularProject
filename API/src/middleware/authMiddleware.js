@@ -22,7 +22,11 @@ const authMiddleware = async (req, res, next) => {
     next();
   } catch (error) {
     await TokenBlackList.create({ token });
-    res.clearCookie("auth");
+    res.clearCookie("auth", {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
     res.status(401).send({ message: "Invalid token!" });
   }
 };
