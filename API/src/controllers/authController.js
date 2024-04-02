@@ -76,4 +76,15 @@ router.get("/profile", isAuth, async (req, res) => {
   }
 });
 
+router.put("/profile", isAuth, async (req, res) => {
+  const { _id: userId } = req.user;
+  const userData = req.body;
+  try {
+    const updatedUser = await authService.updateProfile(userId, userData);
+    res.status(200).send(updatedUser);
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
+
 module.exports = authController = router;
