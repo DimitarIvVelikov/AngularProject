@@ -16,7 +16,6 @@ export class CatalogComponent implements OnInit {
       .getAllTrainingPrograms()
       .subscribe((trainingPrograms) => {
         this.trainingPrograms = trainingPrograms;
-        console.log(this.trainingPrograms);
       });
   }
 }
