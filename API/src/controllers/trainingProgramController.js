@@ -36,12 +36,14 @@ router.post("/", isAuth, async (req, res) => {
     );
     res.status(200).send(trainingProgram);
   } catch (error) {
-    res.status(400).send({ message: error.message + "WTF" });
+    res.status(400).send({ message: error.message });
   }
 });
 
 router.put("/:id", isAuth, async (req, res) => {
   //TODO Implement proper middleware/helper func
+  const id = req.params.id;
+  const editedTrainingProgram = req.body;
   try {
     const trainingProgram = await trainingProgramService.getTrainingProgram(id);
     const owner = trainingProgram.owner;
@@ -52,14 +54,15 @@ router.put("/:id", isAuth, async (req, res) => {
     }
   } catch (error) {
     res.status(400).send({ message: error.message });
+    return;
   }
-
-  const trainingProgram = req.body;
-  const id = req.params.id;
 
   try {
     const updatedTrainingProgram =
-      await trainingProgramService.updateTrainingProgram(id, trainingProgram);
+      await trainingProgramService.updateTrainingProgram(
+        id,
+        editedTrainingProgram
+      );
     res.status(200).send(updatedTrainingProgram);
   } catch (error) {
     res.status(400).send({ message: error.message });
@@ -68,11 +71,12 @@ router.put("/:id", isAuth, async (req, res) => {
 
 router.delete("/:id", isAuth, async (req, res) => {
   const id = req.params.id;
+  const userId = req.user._id;
   //TODO Implement proper middleware/helper func
+
   try {
     const trainingProgram = await trainingProgramService.getTrainingProgram(id);
     const owner = trainingProgram.owner;
-
     if (req?.user._id != owner) {
       res.status(401).send("Not Authorized");
       return;
@@ -83,8 +87,20 @@ router.delete("/:id", isAuth, async (req, res) => {
 
   try {
     const deletedTrainingProgram =
-      await trainingProgramService.deleteTrainingProgram(id);
+      await trainingProgramService.deleteTrainingProgram(id, userId);
     res.status(200).send(deletedTrainingProgram);
+  } catch (error) {
+    res.status(400).send({ message: error.message });
+  }
+});
+
+router.post("/signUp/:id", isAuth, async (req, res) => {
+  const programId = req.params.id;
+  const user = req.user._id;
+
+  try {
+    await trainingProgramService.signUp(user, programId);
+    res.status(200).send({ message: "Signed up!" });
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
