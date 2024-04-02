@@ -87,4 +87,19 @@ router.put("/profile", isAuth, async (req, res) => {
   }
 });
 
+router.get("/profile-populated", isAuth, async (req, res) => {
+  const { _id: userId } = req.user;
+  console.log(userId);
+  try {
+    let populatedUser = await authService.getProfilePopulated(userId);
+    populatedUser = bsonToJson(populatedUser);
+    populatedUser = removePassword(populatedUser);
+    console.log(populatedUser);
+    res.status(200).send(populatedUser);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ message: error.message });
+  }
+});
+
 module.exports = authController = router;

@@ -46,11 +46,22 @@ const getProfile = async (id) => {
   return await User.findOne({ _id: id });
 };
 
+const getProfilePopulated = async (id) => {
+  return await User.findById(id).populate("createdList").populate("signUpList");
+};
+
 const updateProfile = async (id, userData) => {
   return await User.findByIdAndUpdate(id, userData, { runValidators: true });
 };
 
-const authService = { register, login, logout, getProfile, updateProfile };
+const authService = {
+  register,
+  login,
+  logout,
+  getProfile,
+  updateProfile,
+  getProfilePopulated,
+};
 
 module.exports = authService;
 

@@ -63,14 +63,6 @@ const signUp = async (userId, id) => {
   });
 };
 
-const getSignedUpAndCreatedPrograms = async (userId) => {
-  const signUpPrograms = await TrainingProgram.find({ signUpList: userId });
-
-  const createdPrograms = await TrainingProgram.find({
-    owner: userId,
-  });
-};
-
 const trainingProgramService = {
   createTrainingProgram,
   getTrainingPrograms,
@@ -78,7 +70,6 @@ const trainingProgramService = {
   updateTrainingProgram,
   deleteTrainingProgram,
   signUp,
-  getSignedUpAndCreatedPrograms,
 };
 
 module.exports = trainingProgramService;
