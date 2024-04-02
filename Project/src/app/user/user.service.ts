@@ -33,9 +33,19 @@ export class UserService {
       );
   }
 
-  register(email: string, password: string) {
+  register(
+    username: string,
+    email: string,
+    password: string,
+    rePassword: string
+  ) {
     return this.http
-      .post<UserForAuth>('/api/auth/register', { email, password })
+      .post<UserForAuth>('/api/auth/register', {
+        username,
+        email,
+        password,
+        rePassword,
+      })
       .pipe(
         tap((user) => {
           this.user$$.next(user);
@@ -53,6 +63,14 @@ export class UserService {
 
   getProfile() {
     return this.http.get<UserForAuth>('/api/auth/profile').pipe(
+      tap((user) => {
+        this.user$$.next(user);
+      })
+    );
+  }
+
+  updateProfile(profile: UserForAuth) {
+    return this.http.put<UserForAuth>('/api/auth/profile', profile).pipe(
       tap((user) => {
         this.user$$.next(user);
       })
