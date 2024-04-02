@@ -1,1 +1,73 @@
-<p>edit works!</p>
+<div class="wrapper">
+  <form #form="ngForm" (ngSubmit)="edit(form)">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Name"
+      ngModel
+      #inputName="ngModel"
+      [(ngModel)]="trainingProgram.name"
+      required
+    />
+    <ng-container *ngIf="inputName.touched">
+      <p class="error" *ngIf="inputName.errors?.['required']">
+        Name is required!
+      </p>
+    </ng-container>
+    <label for="description">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      cols="30"
+      rows="10"
+      placeholder="Description"
+      ngModel
+      #inputDescription="ngModel"
+      [(ngModel)]="trainingProgram.description"
+      required
+    ></textarea>
+    <ng-container *ngIf="inputDescription.touched">
+      <p class="error" *ngIf="inputDescription.errors?.['required']">
+        Description is required!
+      </p>
+    </ng-container>
+    <label for="duration">Duration</label>
+    <input
+      type="number"
+      name="duration"
+      id="duration"
+      placeholder="Duration"
+      ngModel
+      #inputDuration="ngModel"
+      [(ngModel)]="trainingProgram.duration"
+      required
+    />
+    <ng-container *ngIf="inputDuration.touched">
+      <p class="error" *ngIf="inputDuration.errors?.['required']">
+        Duration is required!
+      </p>
+    </ng-container>
+    <label for="difficulty">Difficulty</label>
+    <input
+      type="text"
+      name="difficulty"
+      id="difficulty"
+      placeholder="Difficulty"
+      ngModel
+      #inputDifficulty="ngModel"
+      [(ngModel)]="trainingProgram.difficulty"
+      required
+    />
+    <ng-container *ngIf="inputDifficulty.touched">
+      <p class="error" *ngIf="inputDifficulty.errors?.['required']">
+        Difficulty is required!
+      </p>
+    </ng-container>
+    <div class="buttons">
+      <button (click)="cancel()">Cancel</button>
+      <button>Edit</button>
+    </div>
+  </form>
+</div>
