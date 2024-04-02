@@ -1,17 +1,85 @@
 <div class="wrapper">
-  <form action="">
+  <form #form="ngForm" (ngSubmit)="create(form)">
     <label for="name">Name</label>
-    <input type="text" name="name" />
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Name"
+      ngModel
+      #inputName="ngModel"
+      required
+    />
+    <ng-container *ngIf="inputName.touched">
+      <p class="error" *ngIf="inputName.errors?.['required']">
+        Name is required!
+      </p>
+    </ng-container>
     <label for="description">Description</label>
     <textarea
       name="description"
       id="description"
       cols="30"
       rows="10"
+      placeholder="Description"
+      ngModel
+      #inputDescription="ngModel"
+      required
     ></textarea>
+    <ng-container *ngIf="inputDescription.touched">
+      <p class="error" *ngIf="inputDescription.errors?.['required']">
+        Description is required!
+      </p>
+    </ng-container>
     <label for="duration">Duration</label>
-    <input type="number" name="duration" />
+    <input
+      type="number"
+      name="duration"
+      id="duration"
+      placeholder="Duration"
+      ngModel
+      #inputDuration="ngModel"
+      required
+    />
+    <ng-container *ngIf="inputDuration.touched">
+      <p class="error" *ngIf="inputDuration.errors?.['required']">
+        Duration is required!
+      </p>
+    </ng-container>
     <label for="difficulty">Difficulty</label>
-    <input type="text" name="difficulty" />
+    <input
+      type="text"
+      name="difficulty"
+      id="difficulty"
+      placeholder="Difficulty"
+      ngModel
+      #inputDifficulty="ngModel"
+      required
+    />
+    <ng-container *ngIf="inputDifficulty.touched">
+      <p class="error" *ngIf="inputDifficulty.errors?.['required']">
+        Difficulty is required!
+      </p>
+    </ng-container>
+    <label for="imageUrl">ImageUrl</label>
+    <input
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+      placeholder="http://example.com || https://example.com"
+      ngModel
+      #inputImageUrl="ngModel"
+      required
+      [appImageUrl]="imageUrlExpression"
+    />
+    <ng-container *ngIf="inputImageUrl.touched">
+      <p class="error" *ngIf="inputImageUrl.errors?.['required']">
+        ImageUrl is required!
+      </p>
+      <p class="error" *ngIf="inputImageUrl.errors?.['imageValidator']">
+        Image Url should start with http:// or https://
+      </p>
+    </ng-container>
+    <button>Create</button>
   </form>
 </div>
