@@ -1,6 +1,6 @@
 article {
   margin: 5px;
-  width: 20vw;
+  width: min(30vw, 400px);
   display: flex;
   justify-content: center;
 }
@@ -15,8 +15,55 @@ p::first-letter {
 a.more-info {
   text-align: center;
   text-decoration: none;
+  border: 1px solid #333;
+  border-radius: 15px;
+  margin: 2px;
 }
 
-figure :is(a:hover, a:focus) {
-  color: crimson;
+button {
+  font-weight: bold;
+  padding: 0.5rem;
+  width: 15vw;
+  border-radius: 15px;
+  background-color: grey;
+  margin-bottom: 1rem;
+}
+
+button:focus,
+button:hover {
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+img {
+  height: 17rem;
+  width: 17rem;
+  margin: 10px;
+  border: 2px solid #333;
+  border-radius: 25px;
+}
+
+.card {
+  scroll-margin-top: 8rem;
+  width: min(50vw, 400px);
+  height: min(100vh, 400px);
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid #000;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card span {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
 }
