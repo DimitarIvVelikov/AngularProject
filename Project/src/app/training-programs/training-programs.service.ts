@@ -17,4 +17,46 @@ export class TrainingProgramsService {
       '/api/training-programs/' + programId
     );
   }
+
+  createTrainingProgram(
+    name: string,
+    description: string,
+    duration: string,
+    difficulty: string,
+    imageUrl: string
+  ) {
+    return this.http.post<TrainingPrograms>('/api/training-programs', {
+      name,
+      description,
+      difficulty,
+      duration,
+      imageUrl,
+    });
+  }
+
+  editTrainingProgram(
+    programId: string,
+    trainingProgram: {
+      name: string;
+      difficulty: string;
+      description: string;
+      duration: string;
+    }
+  ) {
+    return this.http.put<TrainingPrograms>(
+      '/api/training-programs/' + programId,
+      { ...trainingProgram }
+    );
+  }
+
+  deleteTrainingProgram(programId: string) {
+    return this.http.delete('/api/training-programs/' + programId);
+  }
+
+  signUp(programId: string) {
+    return this.http.post<TrainingPrograms>(
+      '/api/training-programs/signUp/' + programId,
+      {}
+    );
+  }
 }
