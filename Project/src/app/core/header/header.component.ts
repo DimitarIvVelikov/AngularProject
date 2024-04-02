@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log('Mount');
-
     this.isLogged;
   }
   logout() {

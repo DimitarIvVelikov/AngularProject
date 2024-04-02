@@ -1,7 +1,7 @@
 <header>
   <div class="top-nav">
     <div class="logo-wrap">
-      <h2>Header</h2>
+      <h2><a routerLink="/">Training</a></h2>
     </div>
     <div *ngIf="!isLogged" class="user-nav">
       <ul>
@@ -27,7 +27,7 @@
 
   <nav class="main-nav">
     <ul>
-      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/create">Create Training Program</a></li>
       <li><a routerLink="/catalog">Catalog</a></li>
     </ul>
   </nav>
