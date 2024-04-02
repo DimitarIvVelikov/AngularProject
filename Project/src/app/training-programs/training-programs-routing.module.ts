@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'edit', component: EditComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'catalog/:trainingId', component: CurrentTrainingProgramComponent },
+  { path: 'catalog/:trainingId/edit', component: EditComponent },
 ];
 
 @NgModule({
