@@ -1,1 +1,79 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="wrapper">
+    <ng-container *ngIf="!editView">
+      <div class="avatar">
+        <img src="../../../assets/back.jpg" alt="avatar" />
+      </div>
+      <div class="info">
+        <div class="username">Username: {{ profile.username }}</div>
+        <div class="email">Email: {{ profile.email | titlecase }}</div>
+        <button (click)="toggleEdit()">Edit</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="editView">
+      <form [formGroup]="form" (ngSubmit)="editProfile()">
+        <label for="username">Username</label>
+        <input
+          type="username"
+          name="username"
+          id="username"
+          [value]="profile.username"
+          required
+          minLength="4"
+          formControlName="username"
+        />
+        <ng-container *ngIf="form.get('username')?.touched">
+          <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+            Username is required!
+          </p>
+          <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+            Username should be at least 4 characters!
+          </p>
+        </ng-container>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          [value]="profile.email"
+          [appEmail]="domains"
+          required
+          formControlName="email"
+        />
+        <ng-container *ngIf="form.get('email')?.touched">
+          <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+            Email is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('email')?.errors?.['emailValidator']"
+          >
+            Email is invalid! Please use emails with domain gmail,abv or yahoo.
+          </p>
+        </ng-container>
+        <div class="buttons">
+          <button (click)="toggleEdit()">Cancel</button>
+          <button>Edit</button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+  <div class="training-list">
+    <div class="createdPrograms">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore velit ex
+        pariatur tempore placeat rerum veritatis quibusdam magni error. Illo
+        adipisci minima non tempore similique suscipit possimus perferendis
+        ullam aperiam?
+      </p>
+    </div>
+    <div class="signedUpPrograms">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
+        soluta quod velit perspiciatis odio nam! Sint illum nam excepturi quo
+        vel, cumque totam mollitia aperiam, architecto delectus incidunt
+        perspiciatis. Sequi.
+      </p>
+    </div>
+  </div>
+</div>
