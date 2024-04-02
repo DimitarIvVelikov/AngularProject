@@ -16,6 +16,18 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    signUpList: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "TrainingProgram",
+      },
+    ],
+    createdList: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "TrainingProgram",
+      },
+    ],
   },
   { timestamps: { createdAt: "created_at" } }
 );
