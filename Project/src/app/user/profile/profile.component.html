@@ -59,21 +59,27 @@
     </ng-container>
   </div>
   <div class="training-list">
-    <div class="createdPrograms">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore velit ex
-        pariatur tempore placeat rerum veritatis quibusdam magni error. Illo
-        adipisci minima non tempore similique suscipit possimus perferendis
-        ullam aperiam?
-      </p>
+    <div class="created-programs">
+      <ng-container *ngIf="profile.createdList.length == 0">
+        <div class="empty">You are not signed up to any training programs!</div>
+      </ng-container>
+      <ng-container *ngIf="profile.createdList.length != 0">
+        <div class="program" *ngFor="let program of profile.createdList">
+          <h3>{{ program.name }}</h3>
+          <button [routerLink]="['/catalog', program._id]">More Info</button>
+        </div>
+      </ng-container>
     </div>
-    <div class="signedUpPrograms">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur
-        soluta quod velit perspiciatis odio nam! Sint illum nam excepturi quo
-        vel, cumque totam mollitia aperiam, architecto delectus incidunt
-        perspiciatis. Sequi.
-      </p>
+    <div class="signed-up-programs">
+      <ng-container *ngIf="profile.signUpList.length == 0">
+        <div class="empty">You are not signed up to any training programs!</div>
+      </ng-container>
+      <ng-container *ngIf="profile.signUpList.length != 0">
+        <div class="program" *ngFor="let program of profile.signUpList">
+          <h3>{{ program.name }}</h3>
+          <button [routerLink]="['/catalog', program._id]">More Info</button>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>

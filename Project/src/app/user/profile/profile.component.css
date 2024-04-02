@@ -34,8 +34,6 @@ app-profile {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-
   margin: 1rem;
   gap: 1rem;
 }
@@ -45,6 +43,38 @@ app-profile {
   border-radius: 30px;
   padding: 2rem;
 }
+
+.createProgram .empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #333;
+  border-radius: 30px;
+  padding: 2rem;
+  margin: 1rem;
+  width: 100%;
+}
+.program {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #333;
+  border-radius: 30px;
+  padding: 1rem;
+
+  width: 100%;
+}
+
+.created-programs,
+.signed-up-programs {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: 50%;
+}
+
 button:focus,
 button:hover {
   transform: scale(1.1);

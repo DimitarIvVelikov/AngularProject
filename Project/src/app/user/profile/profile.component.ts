@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit {
     email: '',
     created_at: '',
     updatedAt: '',
+    signUpList: [],
+    createdList: [],
   };
   editView: boolean = false;
   domains: string[] = environment.domains;
@@ -30,7 +32,7 @@ export class ProfileComponent implements OnInit {
   });
   constructor(private userService: UserService, private fb: FormBuilder) {}
   ngOnInit(): void {
-    this.userService.getProfile().subscribe((profile) => {
+    this.userService.getProfilePopulated().subscribe((profile) => {
       this.profile = profile;
       this.form.setValue({
         username: this.profile?.username,
