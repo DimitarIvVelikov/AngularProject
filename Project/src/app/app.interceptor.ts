@@ -32,6 +32,9 @@ export class AppInterceptor implements HttpInterceptor {
         if (error.status === 400) {
           this.router.navigate(['/login']);
         }
+
+        console.log(error.message, error.status);
+
         return [error];
       })
     );
