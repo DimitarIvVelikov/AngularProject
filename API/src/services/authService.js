@@ -46,7 +46,11 @@ const getProfile = async (id) => {
   return await User.findOne({ _id: id });
 };
 
-const authService = { register, login, logout, getProfile };
+const updateProfile = async (id, userData) => {
+  return await User.findByIdAndUpdate(id, userData, { runValidators: true });
+};
+
+const authService = { register, login, logout, getProfile, updateProfile };
 
 module.exports = authService;
 
