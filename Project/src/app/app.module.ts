@@ -15,13 +15,13 @@ import { appInterceptorProvider } from './app.interceptor';
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     UserModule,
     TrainingProgramsModule,
     CoreModule,
     RouterModule,
     SharedModule,
-    HttpClientModule,
     AppRoutingModule,
   ],
   providers: [appInterceptorProvider],
