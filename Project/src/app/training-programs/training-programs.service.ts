@@ -59,4 +59,8 @@ export class TrainingProgramsService {
       {}
     );
   }
+
+  getLatestTrainingPrograms() {
+    return this.http.get<TrainingPrograms[]>('/api/training-programs/latest');
+  }
 }
