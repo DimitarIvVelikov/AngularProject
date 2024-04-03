@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { environment } from 'src/environments/environments';
 import { Router } from '@angular/router';
 
@@ -28,8 +28,11 @@ export class AppInterceptor implements HttpInterceptor {
     // console.log(request);
 
     return next.handle(request).pipe(
+      tap((response) => {
+        // console.log('Response: ', response);
+      }),
       catchError((error) => {
-        console.log(error.message, error.status);
+        // console.log(error.message, error.status);
         if (error.status === 400 || error.status === 401) {
           this.router.navigate(['/login']);
         }
