@@ -61,7 +61,7 @@
   <div class="training-list">
     <div class="created-programs">
       <ng-container *ngIf="profile.createdList.length == 0">
-        <div class="empty">You are not signed up to any training programs!</div>
+        <div class="empty">You don't have any created programs!</div>
       </ng-container>
       <ng-container *ngIf="profile.createdList.length != 0">
         <div class="program" *ngFor="let program of profile.createdList">
