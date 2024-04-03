@@ -63,6 +63,10 @@ const signUp = async (userId, id) => {
   });
 };
 
+const getLatestTrainingPrograms = async () => {
+  return await TrainingProgram.find().sort({ created_at: -1 }).limit(3);
+};
+
 const trainingProgramService = {
   createTrainingProgram,
   getTrainingPrograms,
@@ -70,6 +74,7 @@ const trainingProgramService = {
   updateTrainingProgram,
   deleteTrainingProgram,
   signUp,
+  getLatestTrainingPrograms,
 };
 
 module.exports = trainingProgramService;

@@ -6,6 +6,19 @@ const router = require("express").Router();
 // const bsonToJson = (data) => {
 //   return JSON.parse(JSON.stringify(data));
 // };
+
+router.get("/latest", async (req, res) => {
+  console.log("Latest training program");
+  try {
+    const latestTrainingPrograms =
+      await trainingProgramService.getLatestTrainingPrograms();
+    res.status(200).send(latestTrainingPrograms);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ message: error.message });
+  }
+});
+
 router.get("/", async (req, res) => {
   try {
     const trainingPrograms = await trainingProgramService.getTrainingPrograms();

@@ -7,9 +7,7 @@ const authMiddleware = async (req, res, next) => {
   if (!token) {
     return next();
   }
-
   const blackListToken = await TokenBlackList.findOne({ token });
-
   if (blackListToken) {
     res.status(401).send({ message: "Invalid token!" });
     return;
