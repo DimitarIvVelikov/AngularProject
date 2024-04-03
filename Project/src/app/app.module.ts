@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,16 +13,16 @@ import { SharedModule } from './shared/shared.module';
 import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     UserModule,
     TrainingProgramsModule,
     CoreModule,
     RouterModule,
     SharedModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
