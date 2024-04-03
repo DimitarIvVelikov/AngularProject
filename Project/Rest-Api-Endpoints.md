@@ -1,18 +1,23 @@
-Base URI = "http://127.0.0.1:5000/api"
+Base API = "http://127.0.0.1:5000/api"
 
 User Base URI = "/auth"
 User Endpoints = {
-login: "/auth/login", POST
-register: "/auth/register", POST
-profile: "/auth/profile" POST
+login: "/login", POST
+register: "/register", POST
+logout: "/logout", POST
+profile: "/profile", GET
+profile: "/profile", PUT
+profilePopulated: "/profile-populated", GET
 }
 
 Training Programs Base URI = "/training-programs"
 
 Training Programs Endpoints = {
-create: "/training-programs/", POST
-getAllTrainingPrograms: "/training-programs/", GET
-getOneTrainingProgram: "/training-programs/:id", GET
-updateTrainingProgram: "/training-programs/:id", PUT
-deleteTrainingProgram: "/training-programs/:id", DELETE
+create: "/", POST
+getLatestTrainingPrograms: "/latest", GET
+getAllTrainingPrograms: "/", GET
+getOneTrainingProgram: "/:id", GET
+updateTrainingProgram: "/:id", PUT
+deleteTrainingProgram: "/:id", DELETE
+signUpForTrainingProgram: "/signUp/:id", POST
 }
