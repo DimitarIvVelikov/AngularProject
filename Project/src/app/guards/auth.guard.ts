@@ -21,36 +21,36 @@ export class AuthActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    const profile = this.userService.getProfile().subscribe((user) => {
-      console.log(user);
+    // const profile = this.userService.getProfile().subscribe((user) => {
+    //   console.log(user);
 
-      if (this.userService.isLoggedIn && route.routeConfig?.path === 'login') {
-        this.router.navigate(['/home']);
-        return false;
-      } else if (
-        this.userService.isLoggedIn &&
-        route.routeConfig?.path === 'register'
-      ) {
-        this.router.navigate(['/home']);
-        return false;
-      } else if (
-        !this.userService.isLoggedIn &&
-        route.routeConfig?.path === 'create'
-      ) {
-        this.router.navigate(['/login']);
-        return false;
-      } else if (
-        !this.userService.isLoggedIn &&
-        route.routeConfig?.path === 'profile'
-      ) {
-        this.router.navigate(['/login']);
-        return false;
-      }
-      return true;
-    });
-    console.log('Profile: ', profile);
+    //   if (this.userService.isLoggedIn && route.routeConfig?.path === 'login') {
+    //     this.router.navigate(['/home']);
+    //     return false;
+    //   } else if (
+    //     this.userService.isLoggedIn &&
+    //     route.routeConfig?.path === 'register'
+    //   ) {
+    //     this.router.navigate(['/home']);
+    //     return false;
+    //   } else if (
+    //     !this.userService.isLoggedIn &&
+    //     route.routeConfig?.path === 'create'
+    //   ) {
+    //     this.router.navigate(['/login']);
+    //     return false;
+    //   } else if (
+    //     !this.userService.isLoggedIn &&
+    //     route.routeConfig?.path === 'profile'
+    //   ) {
+    //     this.router.navigate(['/login']);
+    //     return false;
+    //   }
+    //   return true;
+    // });
+    // console.log('Profile: ', profile);
 
-    return !!profile;
-    // return this.userService.isLoggedIn;
+    // return !!profile;
+    return this.userService.isLoggedIn;
   }
 }
