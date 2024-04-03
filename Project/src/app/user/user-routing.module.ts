@@ -10,11 +10,13 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    // canActivate: [AuthDeactivate],
+    // canActivate: [AuthActivate],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [AuthDeactivate],
+    // canActivate: [AuthActivate],
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthActivate] },
 ];
