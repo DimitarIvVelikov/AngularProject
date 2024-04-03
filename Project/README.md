@@ -30,6 +30,26 @@ Observables were used to fetch data from the API with the provided Endpoints as 
 
 The project is nowhere near being complete but it is finalized for the exam to a point where it can be graded.
 
+The following will present the libraries that are used to create this project.
+
+# FrontEnd
+
+- Angular
+- TypeScript
+- RxJS
+- Font Google Api
+
+# Backend
+
+- NodeJS
+- Express
+- CookieParser
+- Mongoose
+- MongoDB
+- cors
+- JWT token
+- Bcrypt
+
 # Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
