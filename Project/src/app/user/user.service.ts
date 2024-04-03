@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserForAuth } from '../types/user';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -32,6 +32,10 @@ export class UserService {
         })
       );
   }
+
+  // checkLogin(): Observable<UserForAuth> {
+  //   return this.user$ as Observable<UserForAuth>;
+  // }
 
   register(
     username: string,
