@@ -1,3 +1,19 @@
 <main>
-  <app-cards-container [trainingPrograms]="trainingPrograms" />
+  <h2>Our Latest Courses</h2>
+
+  <div class="wrapper">
+    <div class="card" *ngFor="let program of trainingPrograms">
+      <img [src]="program.imageUrl" [alt]="" width="500" height="500" />
+
+      <div class="info">
+        <span class="nowrap" [id]="program.name">{{ program.name }}</span>
+
+        <div class="more-info">
+          <span>Difficulty: {{ program.difficulty }}</span>
+          <span class="nowrap">Duration: {{ program.duration }}</span>
+        </div>
+        <button [routerLink]="['/catalog', program._id]">More Info</button>
+      </div>
+    </div>
+  </div>
 </main>
