@@ -25,15 +25,14 @@ export class AppInterceptor implements HttpInterceptor {
         withCredentials: true,
       });
     }
-    console.log(request);
+    // console.log(request);
 
     return next.handle(request).pipe(
       catchError((error) => {
-        if (error.status === 400) {
+        console.log(error.message, error.status);
+        if (error.status === 400 || error.status === 401) {
           this.router.navigate(['/login']);
         }
-
-        console.log(error.message, error.status);
 
         return [error];
       })
